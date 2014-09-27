@@ -11,6 +11,10 @@ Vue.component('nav-bar', {
   template: '#nav-bar',
 });
 
+Vue.component('sync-box', {
+  template: '#sync-box',
+});
+
 Vue.component('profile', {
   template: '#profile',
 });

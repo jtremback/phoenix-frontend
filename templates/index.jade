@@ -22,14 +22,14 @@ html(lang="en")
               span.icon-bar
               span.icon-bar
               span.icon-bar
-            a.navbar-brand(href="#") Brand
+            a.navbar-brand(href="#") Phoenix
 
           .collapse.navbar-collapse
             ul.nav.navbar-nav
               li
-                a(href="#/") home
+                a(href="#/") Latest
               li
-                a(href="#/profile") profile
+                a(href="#/profile") Profile
 
             ul.nav.navbar-nav.navbar-right
               li
@@ -39,7 +39,15 @@ html(lang="en")
       .container
         .row
           feed-list.col-sm-8
-          publish-box.col-sm-4
+          .col-sm-4
+            publish-box
+            sync-box
+
+    script#sync-box(type="x-template")
+      p Last synced 34 years ago
+      .btn-group.btn-group-lg
+        button.btn.btn-default(type="button") Sync
+        button.btn.btn-default(type="button") Add Feed
 
 
     script#profile(type="x-template")
