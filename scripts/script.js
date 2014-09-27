@@ -7,6 +7,10 @@ Vue.component('home', {
   template: '#home',
 });
 
+Vue.component('nav-bar', {
+  template: '#nav-bar',
+});
+
 Vue.component('profile', {
   template: '#profile',
 });
@@ -33,11 +37,16 @@ Vue.component('publish-box', {
 Vue.component('feed-list', {
   template: '#feed-list',
   data: {
-    posts: [
+    posts: [ // Hardcoded for testing
+      {
+        created: 1411849284664,
+        author: 'Jehan',
+        content: 'Under the hood, Vue.js intercepts an observed Array’s mutating methods (`push()`, `pop()`, `shift()`, `unshift()`, `splice()`, `sort()` and `reverse()`) so they will also trigger View updates.'
+      },
       {
         created: 1411844763705,
         author: 'Jehan',
-        content: 'Under the hood, Vue.js intercepts an observed Array’s mutating methods (`push()`, `pop()`, `shift()`, `unshift()`, `splice()`, `sort()` and `reverse()`) so they will also trigger View updates.'
+        content: 'Notify Vue.js to apply transition CSS classes to this element. The transition classes are applied when certain transition-triggering directives modify the element, or when the ViewModel’s DOM manipulation methods are called.'
       }
     ]
   }
@@ -59,20 +68,6 @@ Vue.component('basic-post', {
   }
 });
 
-// Vue.component('nest', Vue.extend({
-//     template: '#nest',
-//     components: {
-//         view1: Vue.extend({
-//             template: '<span>this is subview 1</span>',
-//         }),
-//         view2: Vue.extend({
-//             template: '<span>this is subview 2</span>',
-//         }),
-//     },
-//     data: {
-//         subview: 'view1',
-//     },
-// }));
 
 var main = new Vue({
   el: '#main',

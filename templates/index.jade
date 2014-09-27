@@ -9,18 +9,38 @@ html(lang="en")
   body
 
     #main
+      nav-bar
       div(v-view="currentView", v-ref="view")
 
-    ul
-      li
-        a(href="#/") home
-      li
-        a(href="#/profile") profile
+    script#nav-bar(type="x-template")
+      nav.navbar.navbar-default(role="navigation")
+        .container
+
+          .navbar-header
+            button.navbar-toggle.collapsed(type="button", data-toggle="collapse", data-target="#bs-example-navbar-collapse-1")
+              span.sr-only Toggle navigation
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            a.navbar-brand(href="#") Brand
+
+          .collapse.navbar-collapse
+            ul.nav.navbar-nav
+              li
+                a(href="#/") home
+              li
+                a(href="#/profile") profile
+
+            ul.nav.navbar-nav.navbar-right
+              li
+                a(href="#") Token
 
     script#home(type="x-template")
-      div home
-      publish-box
-      feed-list
+      .container
+        .row
+          feed-list.col-sm-8
+          publish-box.col-sm-4
+
 
     script#profile(type="x-template")
       div profile
@@ -35,12 +55,12 @@ html(lang="en")
           a.btn.btn-lg.btn-default.pull-right(v-on="click: post") Post
 
     script#feed-list(type="x-template")
-      ul
-        li(v-repeat="posts" v-component="basic-post")
+      div(v-repeat="posts" v-component="basic-post")
 
     script#basic-post(type="x-template")
-      p {{author}}
-      p {{parsed_time}}
-      p {{{parsed_content}}}
+      .panel.panel-default
+        .panel-heading <strong>{{author}}</strong> - <em>{{parsed_time}}</em>
+        .panel-body
+          p {{{parsed_content}}}
 
     script(src="build/bundle.js")
