@@ -1,14 +1,36 @@
 doctype html
-html(lang='en')
+html(lang="en")
   head
-    meta(charset='utf-8')
-    meta(http-equiv='X-UA-Compatible', content='IE=edge')
-    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
     title Bootstrap 101 Template
-    link(href='build/style.css', rel='stylesheet')
+    link(href="build/style.css", rel="stylesheet")
   body
-    //- include feed.jade
-    //- include profile.jade
-    | hello
 
-    script(src='build/bundle.js')
+    #main
+      div(v-view="currentView", v-ref="view")
+
+    ul
+      li
+        a(href="#/") home
+      li
+        a(href="#/profile") profile
+
+    script#home(type="x-template")
+      div home
+      post-box
+
+    script#profile(type="x-template")
+      div profile
+
+    script#post-box(type="x-template")
+      div.panel.panel-default
+        div.panel-body
+          .well.well-sm {{{parsed || '&nbsp;'}}}
+          p
+            textarea.form-control.inline-control(v-model="content" placeholder="Publish...")
+
+          a.btn.btn-lg.btn-default.pull-right(v-on="click: post") Post
+
+    script(src="build/bundle.js")

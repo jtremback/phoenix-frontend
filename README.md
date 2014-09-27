@@ -1,0 +1,1 @@
+You need to have gulp installed. Run `gulp watch`, then `open index.html'
