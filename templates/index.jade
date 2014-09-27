@@ -19,12 +19,13 @@ html(lang="en")
 
     script#home(type="x-template")
       div home
-      post-box
+      publish-box
+      feed-list
 
     script#profile(type="x-template")
       div profile
 
-    script#post-box(type="x-template")
+    script#publish-box(type="x-template")
       div.panel.panel-default
         div.panel-body
           .well.well-sm {{{parsed || '&nbsp;'}}}
@@ -32,5 +33,14 @@ html(lang="en")
             textarea.form-control.inline-control(v-model="content" placeholder="Publish...")
 
           a.btn.btn-lg.btn-default.pull-right(v-on="click: post") Post
+
+    script#feed-list(type="x-template")
+      ul
+        li(v-repeat="posts" v-component="basic-post")
+
+    script#basic-post(type="x-template")
+      p {{author}}
+      p {{parsed_time}}
+      p {{{parsed_content}}}
 
     script(src="build/bundle.js")

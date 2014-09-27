@@ -1,6 +1,7 @@
 var director = require('director');
 var Vue = require('vue');
 var markdown = require('markdown').markdown;
+var moment = require('moment');
 
 Vue.component('home', {
   template: '#home',
@@ -10,8 +11,8 @@ Vue.component('profile', {
   template: '#profile',
 });
 
-Vue.component('post-box', {
-  template: '#post-box',
+Vue.component('publish-box', {
+  template: '#publish-box',
   data: {
     content: null
   },
@@ -24,6 +25,35 @@ Vue.component('post-box', {
     parsed: {
       $get: function () {
         return markdown.toHTML(this.content || '');
+      }
+    }
+  }
+});
+
+Vue.component('feed-list', {
+  template: '#feed-list',
+  data: {
+    posts: [
+      {
+        created: 1411844763705,
+        author: 'Jehan',
+        content: 'Under the hood, Vue.js intercepts an observed Array’s mutating methods (`push()`, `pop()`, `shift()`, `unshift()`, `splice()`, `sort()` and `reverse()`) so they will also trigger View updates.'
+      }
+    ]
+  }
+});
+
+Vue.component('basic-post', {
+  template: '#basic-post',
+  computed: {
+    parsed_content: {
+      $get: function () {
+        return markdown.toHTML(this.content || '');
+      }
+    },
+    parsed_time: {
+      $get: function () {
+        return moment(this.created).fromNow();
       }
     }
   }
